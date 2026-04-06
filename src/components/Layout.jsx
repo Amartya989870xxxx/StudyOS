@@ -10,8 +10,11 @@ import {
   Menu, 
   X,
   Search,
-  Zap
+  Zap,
+  Sun,
+  Moon
 } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 const Layout = ({ children }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -113,7 +116,10 @@ const Layout = ({ children }) => {
           <Menu size={20} />
         </button>
 
-        {/* Content Area */}
+        {/* Theme Toggle */}
+        <ThemeToggle />
+
+        {/* Main Content Area */}
         <div style={{ padding: '2rem', flex: 1, overflowY: 'auto' }}>
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -153,8 +159,9 @@ const Layout = ({ children }) => {
 
         .nav-link.active {
           background: var(--primary-glow);
-          color: white;
-          box-shadow: 0 4px 15px -5px rgba(99, 102, 241, 0.4);
+          color: var(--btn-text);
+          font-weight: 700;
+          box-shadow: 0 4px 15px -5px rgba(0, 0, 0, 0.2);
         }
       `}</style>
     </div>
@@ -164,8 +171,8 @@ const Layout = ({ children }) => {
 const SidebarContent = ({ navItems, closeSidebar }) => (
   <>
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '2.5rem' }}>
-      <Zap color="var(--accent-purple)" fill="var(--accent-purple)" size={28} />
-      <span style={{ fontSize: '1.5rem', fontWeight: '800', letterSpacing: '-1px' }}>StudyOS</span>
+      <Zap color="var(--accent-beige)" fill="var(--accent-beige)" size={28} />
+      <span style={{ fontSize: '1.6rem', fontWeight: '800', letterSpacing: '-1px', color: 'var(--text-main)', fontFamily: 'var(--font-heading)' }}>StudyOS</span>
     </div>
     <nav style={{ flex: 1 }}>
       {navItems.map((item) => (

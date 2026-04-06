@@ -58,15 +58,15 @@ const Tasks = () => {
   const getPriorityColor = (p) => {
     if (p === 'High') return 'var(--accent-red)';
     if (p === 'Medium') return 'var(--accent-orange)';
-    return 'var(--accent-blue)';
+    return 'var(--accent-beige)';
   };
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
         <div>
-          <h2 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '0.5rem' }}>Study Tasks</h2>
-          <p style={{ color: 'var(--text-muted)' }}>Stay on top of your study schedule and prioritize key topics.</p>
+          <h2 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '0.5rem', fontFamily: 'var(--font-heading)', letterSpacing: '-1px' }}>Study <i style={{ fontWeight: 400 }}>Tasks</i></h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>Stay on top of your study schedule and prioritize key topics.</p>
         </div>
         <button 
           onClick={() => setIsAddingTask(true)} 
@@ -97,7 +97,7 @@ const Tasks = () => {
             <Filter size={16} color="var(--text-dim)" />
             <select 
               className="glass" 
-              style={{ padding: '6px 12px', fontSize: '0.85rem', background: 'rgba(255,255,255,0.05)', color: 'white', borderRadius: '8px', border: '1px solid var(--surface-border)' }}
+              style={{ padding: '6px 12px', fontSize: '0.85rem', background: 'var(--surface-color)', color: 'var(--text-main)', borderRadius: '8px', border: '1px solid var(--surface-border)' }}
               value={filters.priority}
               onChange={e => setFilters({ ...filters, priority: e.target.value })}
             >
@@ -156,7 +156,7 @@ const Tasks = () => {
             <input 
               autoFocus
               className="glass" 
-              style={{ width: '100%', padding: '12px', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', border: '1px solid var(--surface-border)', color: 'white' }}
+              style={{ width: '100%', padding: '12px', background: 'var(--surface-color)', borderRadius: '10px', border: '1px solid var(--surface-border)', color: 'var(--text-main)' }}
               value={newTask.title}
               onChange={e => setNewTask({...newTask, title: e.target.value})}
               placeholder="e.g. Solve 10 Binary Tree problems"
@@ -169,7 +169,7 @@ const Tasks = () => {
               <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>Subject</label>
               <select 
                 className="glass" 
-                style={{ width: '100%', padding: '12px', background: 'rgba(20,20,25,1)', borderRadius: '10px', border: '1px solid var(--surface-border)', color: 'white' }}
+                style={{ width: '100%', padding: '12px', background: 'var(--surface-color)', borderRadius: '10px', border: '1px solid var(--surface-border)', color: 'var(--text-main)' }}
                 value={newTask.subject}
                 onChange={e => setNewTask({...newTask, subject: e.target.value, topic: ''})}
                 required
@@ -182,7 +182,7 @@ const Tasks = () => {
               <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>Topic (Optional)</label>
               <select 
                 className="glass" 
-                style={{ width: '100%', padding: '12px', background: 'rgba(20,20,25,1)', borderRadius: '10px', border: '1px solid var(--surface-border)', color: 'white' }}
+                style={{ width: '100%', padding: '12px', background: 'var(--surface-color)', borderRadius: '10px', border: '1px solid var(--surface-border)', color: 'var(--text-main)' }}
                 value={newTask.topic}
                 onChange={e => setNewTask({...newTask, topic: e.target.value})}
               >
@@ -200,7 +200,7 @@ const Tasks = () => {
               <input 
                 type="date"
                 className="glass" 
-                style={{ width: '100%', padding: '12px', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', border: '1px solid var(--surface-border)', color: 'white' }}
+                style={{ width: '100%', padding: '12px', background: 'var(--surface-color)', borderRadius: '10px', border: '1px solid var(--surface-border)', color: 'var(--text-main)' }}
                 value={newTask.deadline}
                 onChange={e => setNewTask({...newTask, deadline: e.target.value})}
                 required
@@ -210,7 +210,7 @@ const Tasks = () => {
               <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>Priority</label>
               <select 
                 className="glass" 
-                style={{ width: '100%', padding: '12px', background: 'rgba(20,20,25,1)', borderRadius: '10px', border: '1px solid var(--surface-border)', color: 'white' }}
+                style={{ width: '100%', padding: '12px', background: 'var(--surface-color)', borderRadius: '10px', border: '1px solid var(--surface-border)', color: 'var(--text-main)' }}
                 value={newTask.priority}
                 onChange={e => setNewTask({...newTask, priority: e.target.value})}
               >
@@ -234,7 +234,7 @@ const TaskListItem = ({ task, onToggle, onDelete }) => {
   const getPriorityColor = (p) => {
     if (p === 'High') return 'var(--accent-red)';
     if (p === 'Medium') return 'var(--accent-orange)';
-    return 'var(--accent-blue)';
+    return 'var(--accent-beige)';
   };
 
   return (
@@ -272,7 +272,7 @@ const TaskListItem = ({ task, onToggle, onDelete }) => {
         </h4>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-            <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent-purple)' }}></div>
+            <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent-beige)' }}></div>
             {task.subject} {task.topic ? `• ${task.topic}` : ''}
           </span>
           <span style={{ 

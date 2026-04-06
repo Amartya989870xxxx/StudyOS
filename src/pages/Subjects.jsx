@@ -22,14 +22,14 @@ const Subjects = () => {
   const [selectedSubject, setSelectedSubject] = useState(null);
   const [isAddingTopic, setIsAddingTopic] = useState(false);
 
-  const [newSubject, setNewSubject] = useState({ name: '', description: '', color: '#6366f1' });
+  const [newSubject, setNewSubject] = useState({ name: '', description: '', color: '#d4a373' });
   const [newTopic, setNewTopic] = useState({ name: '', difficulty: 'Medium', status: 'Not Started', notes: '', revisionDate: '' });
 
   const handleAddSubject = (e) => {
     e.preventDefault();
     if (newSubject.name.trim()) {
       addSubject(newSubject);
-      setNewSubject({ name: '', description: '', color: '#6366f1' });
+      setNewSubject({ name: '', description: '', color: '#d4a373' });
       setIsAddingSubject(false);
     }
   };
@@ -47,8 +47,8 @@ const Subjects = () => {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
         <div>
-          <h2 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '0.5rem' }}>Subjects & Topics</h2>
-          <p style={{ color: 'var(--text-muted)' }}>Manage your learning domains and drill down into specific topics.</p>
+          <h2 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '0.5rem', fontFamily: 'var(--font-heading)', letterSpacing: '-1px' }}>Subjects & <i style={{ fontWeight: 400 }}>Topics</i></h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>Manage your learning domains and drill down into specific topics.</p>
         </div>
         <button 
           onClick={() => setIsAddingSubject(true)} 
@@ -111,7 +111,7 @@ const Subjects = () => {
                 />
               ))}
               {topics.filter(t => t.subjectId === selectedSubject.id).length === 0 && (
-                <p style={{ gridColumn: '1/-1', textAlign: 'center', padding: '3rem', color: 'var(--text-dim)', border: '2px dashed rgba(255,255,255,0.05)', borderRadius: '16px' }}>
+                <p style={{ gridColumn: '1/-1', textAlign: 'center', padding: '3rem', color: 'var(--text-dim)', border: '2px dashed var(--surface-border)', borderRadius: '16px' }}>
                   No topics added yet. Click "Add Topic" to get started.
                 </p>
               )}
@@ -128,7 +128,7 @@ const Subjects = () => {
             <input 
               autoFocus
               className="glass" 
-              style={{ width: '100%', padding: '12px', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', border: '1px solid var(--surface-border)', color: 'white' }}
+              style={{ width: '100%', padding: '12px', background: 'var(--surface-color)', borderRadius: '10px', border: '1px solid var(--surface-border)', color: 'var(--text-main)' }}
               value={newSubject.name}
               onChange={e => setNewSubject({...newSubject, name: e.target.value})}
               placeholder="e.g. Mathematics"
@@ -139,7 +139,7 @@ const Subjects = () => {
             <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>Description</label>
             <textarea 
               className="glass" 
-              style={{ width: '100%', padding: '12px', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', border: '1px solid var(--surface-border)', color: 'white', minHeight: '80px' }}
+              style={{ width: '100%', padding: '12px', background: 'var(--surface-color)', borderRadius: '10px', border: '1px solid var(--surface-border)', color: 'var(--text-main)', minHeight: '80px' }}
               value={newSubject.description}
               onChange={e => setNewSubject({...newSubject, description: e.target.value})}
               placeholder="Brief overview of what this subject covers..."
@@ -148,7 +148,7 @@ const Subjects = () => {
           <div>
             <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>Label Color</label>
             <div style={{ display: 'flex', gap: '0.75rem' }}>
-              {['#6366f1', '#a855f7', '#ec4899', '#ef4444', '#f59e0b', '#10b981', '#3b82f6'].map(c => (
+              {['#d4a373', '#faedcd', '#fefae0', '#e9edc9', '#ccd5ae', '#d4a373', '#c9ada7'].map(c => (
                 <button 
                   key={c}
                   type="button"
@@ -156,9 +156,9 @@ const Subjects = () => {
                   style={{ 
                     width: '32px', 
                     height: '32px', 
-                    borderRadius: '50%', 
+                    borderRadius: '8px', 
                     background: c, 
-                    border: newSubject.color === c ? '2px solid white' : 'none',
+                    border: newSubject.color === c ? '2px solid var(--text-main)' : '1px solid var(--surface-border)',
                     cursor: 'pointer',
                     transform: newSubject.color === c ? 'scale(1.1)' : 'scale(1)',
                     transition: 'all 0.2s'
@@ -179,7 +179,7 @@ const Subjects = () => {
             <input 
               autoFocus
               className="glass" 
-              style={{ width: '100%', padding: '12px', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', border: '1px solid var(--surface-border)', color: 'white' }}
+              style={{ width: '100%', padding: '12px', background: 'var(--surface-color)', borderRadius: '10px', border: '1px solid var(--surface-border)', color: 'var(--text-main)' }}
               value={newTopic.name}
               onChange={e => setNewTopic({...newTopic, name: e.target.value})}
               placeholder="e.g. Binary Search Trees"
@@ -191,7 +191,7 @@ const Subjects = () => {
               <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>Difficulty</label>
               <select 
                 className="glass" 
-                style={{ width: '100%', padding: '12px', background: 'rgba(20,20,25,1)', borderRadius: '10px', border: '1px solid var(--surface-border)', color: 'white' }}
+                style={{ width: '100%', padding: '12px', background: 'var(--surface-color)', borderRadius: '10px', border: '1px solid var(--surface-border)', color: 'var(--text-main)' }}
                 value={newTopic.difficulty}
                 onChange={e => setNewTopic({...newTopic, difficulty: e.target.value})}
               >
@@ -204,7 +204,7 @@ const Subjects = () => {
               <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>Initial Status</label>
               <select 
                 className="glass" 
-                style={{ width: '100%', padding: '12px', background: 'rgba(20,20,25,1)', borderRadius: '10px', border: '1px solid var(--surface-border)', color: 'white' }}
+                style={{ width: '100%', padding: '12px', background: 'var(--surface-color)', borderRadius: '10px', border: '1px solid var(--surface-border)', color: 'var(--text-main)' }}
                 value={newTopic.status}
                 onChange={e => setNewTopic({...newTopic, status: e.target.value})}
               >
@@ -219,7 +219,7 @@ const Subjects = () => {
             <input 
               type="date"
               className="glass" 
-              style={{ width: '100%', padding: '12px', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', border: '1px solid var(--surface-border)', color: 'white' }}
+              style={{ width: '100%', padding: '12px', background: 'var(--surface-color)', borderRadius: '10px', border: '1px solid var(--surface-border)', color: 'var(--text-main)' }}
               value={newTopic.revisionDate}
               onChange={e => setNewTopic({...newTopic, revisionDate: e.target.value})}
             />
@@ -292,13 +292,13 @@ const TopicListItem = ({ topic, onUpdate, onDelete }) => {
 
   const getStatusColor = (s) => {
     if (s === 'Completed') return 'var(--accent-green)';
-    if (s === 'In Progress') return 'var(--accent-blue)';
-    if (s === 'Needs Revision') return 'var(--accent-purple)';
+    if (s === 'In Progress') return 'var(--accent-beige)';
+    if (s === 'Needs Revision') return 'var(--accent-orange)';
     return 'var(--text-dim)';
   };
 
   return (
-    <div className="glass" style={{ padding: '1rem', display: 'flex', flexDirection: 'column', gap: '0.75rem', background: 'rgba(255,255,255,0.01)' }}>
+    <div className="glass" style={{ padding: '1rem', display: 'flex', flexDirection: 'column', gap: '0.75rem', background: 'var(--surface-color)' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <h4 style={{ fontSize: '1rem', fontWeight: 600 }}>{topic.name}</h4>
         <button onClick={onDelete} className="btn-ghost" style={{ padding: '4px', color: 'var(--accent-red)', opacity: 0.6 }}>
@@ -368,7 +368,7 @@ const TopicListItem = ({ topic, onUpdate, onDelete }) => {
         <input 
           type="date"
           className="glass"
-          style={{ width: '130px', padding: '4px', fontSize: '0.75rem', background: 'rgba(255,255,255,0.03)', color: 'white', borderRadius: '6px', border: '1px solid var(--surface-border)' }}
+          style={{ width: '130px', padding: '4px', fontSize: '0.75rem', background: 'var(--surface-hover)', color: 'var(--text-main)', borderRadius: '6px', border: '1px solid var(--surface-border)' }}
           value={topic.revisionDate || ''}
           onChange={e => onUpdate({ revisionDate: e.target.value, status: 'Needs Revision' })}
         />

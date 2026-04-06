@@ -42,7 +42,7 @@ const Revision = () => {
     if (view === 'month') {
       const { dueToday, upcomingToday } = getRevisionStatusForDate(date);
       if (dueToday > 0) return <div style={{ height: '4px', width: '4px', background: 'var(--accent-red)', borderRadius: '50%', margin: '2px auto' }}></div>;
-      if (upcomingToday > 0) return <div style={{ height: '4px', width: '4px', background: 'var(--accent-blue)', borderRadius: '50%', margin: '2px auto' }}></div>;
+      if (upcomingToday > 0) return <div style={{ height: '4px', width: '4px', background: 'var(--accent-beige)', borderRadius: '50%', margin: '2px auto' }}></div>;
     }
     return null;
   };
@@ -71,8 +71,8 @@ const Revision = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       <header>
-        <h2 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '0.5rem' }}>Revision Planner</h2>
-        <p style={{ color: 'var(--text-muted)' }}>Strategically schedule your revisions to maximize long-term retention.</p>
+        <h2 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '0.5rem', fontFamily: 'var(--font-heading)', letterSpacing: '-1px' }}>Revision <i style={{ fontWeight: 400 }}>Planner</i></h2>
+        <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>Strategically schedule your revisions to maximize long-term retention.</p>
       </header>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
@@ -84,8 +84,8 @@ const Revision = () => {
           style={{ padding: '1.5rem', height: 'fit-content' }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-            <CalendarIcon color="var(--accent-purple)" size={20} />
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>Revision Calendar</h3>
+            <CalendarIcon color="var(--accent-beige)" size={20} />
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, fontFamily: 'var(--font-heading)' }}>Revision Calendar</h3>
           </div>
           
           <div className="custom-calendar-wrapper">
@@ -158,12 +158,12 @@ const Revision = () => {
             )}
           </div>
 
-          <div style={{ marginTop: '2rem', padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', borderLeft: '3px solid var(--accent-blue)' }}>
+          <div style={{ marginTop: '2rem', padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', borderLeft: '3px solid var(--accent-beige)' }}>
             <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-              <HelpCircle size={18} color="var(--accent-blue)" style={{ marginTop: '2px' }} />
+              <HelpCircle size={18} color="var(--accent-beige)" style={{ marginTop: '2px' }} />
               <div>
-                <h5 style={{ fontSize: '0.9rem', fontWeight: 700, marginBottom: '0.2rem' }}>Spaced Repetition Tip</h5>
-                <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.4 }}>
+                <h5 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.2rem', fontFamily: 'var(--font-heading)' }}>Spaced Repetition Tip</h5>
+                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
                   StudyOS automatically marks topics for revision 3 days after completion. This helps moving knowledge from short-term to long-term memory.
                 </p>
               </div>
@@ -195,8 +195,8 @@ const Revision = () => {
         }
         .react-calendar__tile--active {
           background: var(--primary-glow) !important;
-          color: white !important;
-          box-shadow: 0 4px 15px -5px rgba(99, 102, 241, 0.4);
+          color: #1a1a1a !important;
+          box-shadow: 0 4px 15px -5px rgba(212, 163, 115, 0.4);
         }
         .react-calendar__navigation button {
           color: var(--text-main) !important;

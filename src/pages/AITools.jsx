@@ -64,32 +64,32 @@ const AITools = () => {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', maxWidth: '1000px', margin: '0 auto' }}>
       <header style={{ textAlign: 'center' }}>
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
-          <div style={{ padding: '12px', borderRadius: '16px', background: 'var(--primary-glow)', boxShadow: '0 0 30px rgba(99, 102, 241, 0.3)' }}>
-            <Cpu size={32} color="white" />
+          <div style={{ padding: '14px', borderRadius: '16px', background: 'var(--primary-glow)', boxShadow: '0 10px 40px -10px rgba(212, 163, 115, 0.4)' }}>
+            <Cpu size={32} color="var(--btn-text)" />
           </div>
         </div>
-        <h2 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '0.5rem', letterSpacing: '-1px' }}>AI Study Assistant</h2>
-        <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>Leverage artificial intelligence to accelerate your learning process.</p>
+        <h2 style={{ fontSize: '3.5rem', fontWeight: 800, marginBottom: '0.5rem', letterSpacing: '-2px', fontFamily: 'var(--font-heading)' }}>AI Study <i style={{ fontWeight: 400 }}>Assistant</i></h2>
+        <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem' }}>Leverage artificial intelligence to accelerate your learning process.</p>
       </header>
 
       {/* Tool Selection */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
         {tools.map(tool => (
-          <button
-            key={tool.id}
-            onClick={() => { setActiveTool(tool.id); setResult(null); }}
-            className={`glass glass-hover ${activeTool === tool.id ? 'active-tool' : ''}`}
-            style={{ 
-              padding: '1.5rem', 
-              textAlign: 'left', 
-              cursor: 'pointer',
-              border: activeTool === tool.id ? '1px solid var(--accent-purple)' : '1px solid var(--surface-border)',
-              background: activeTool === tool.id ? 'rgba(139, 92, 246, 0.05)' : 'rgba(255, 255, 255, 0.02)'
-            }}
-          >
-            <div style={{ color: activeTool === tool.id ? 'var(--accent-purple)' : 'var(--text-dim)', marginBottom: '0.75rem' }}>
-              {tool.icon}
-            </div>
+            <button
+              key={tool.id}
+              onClick={() => { setActiveTool(tool.id); setResult(null); }}
+              className={`glass glass-hover ${activeTool === tool.id ? 'active-tool' : ''}`}
+              style={{ 
+                padding: '1.5rem', 
+                textAlign: 'left', 
+                cursor: 'pointer',
+                border: activeTool === tool.id ? '1px solid var(--accent-beige)' : '1px solid var(--surface-border)',
+                background: activeTool === tool.id ? 'var(--surface-hover)' : 'var(--surface-color)'
+              }}
+            >
+              <div style={{ color: activeTool === tool.id ? 'var(--accent-beige)' : 'var(--text-dim)', marginBottom: '0.75rem' }}>
+                {tool.icon}
+              </div>
             <h4 style={{ fontWeight: 700, marginBottom: '0.25rem', color: activeTool === tool.id ? 'var(--text-main)' : 'var(--text-muted)' }}>{tool.name}</h4>
             <p style={{ fontSize: '0.8rem', color: 'var(--text-dim)' }}>{tool.description}</p>
           </button>
@@ -104,7 +104,7 @@ const AITools = () => {
         style={{ padding: '2rem', display: 'flex', gap: '1rem', alignItems: 'center' }}
       >
         <div style={{ flex: 1, position: 'relative' }}>
-          <Sparkles size={18} color="var(--accent-purple)" style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)' }} />
+          <Sparkles size={18} color="var(--accent-beige)" style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)' }} />
           <input 
             type="text" 
             placeholder={`Enter a topic for ${activeTool}...`} 
@@ -116,7 +116,7 @@ const AITools = () => {
               padding: '16px 20px 16px 48px', 
               borderRadius: '16px', 
               border: '1px solid var(--surface-border)',
-              background: 'rgba(255,255,255,0.02)',
+              background: 'var(--surface-hover)',
               fontSize: '1rem',
               color: 'var(--text-main)',
               outline: 'none'
@@ -129,7 +129,7 @@ const AITools = () => {
               value={flashcardCount}
               onChange={e => setFlashcardCount(Number(e.target.value))}
               className="glass"
-              style={{ padding: '16px 12px', background: 'rgba(20,20,25,1)', color: 'white', borderRadius: '12px', width: '100%', fontSize: '0.9rem', outline: 'none' }}
+              style={{ padding: '16px 12px', background: 'var(--surface-color)', color: 'var(--text-main)', borderRadius: '12px', width: '100%', fontSize: '0.9rem', outline: 'none' }}
              >
                 {[5, 10, 15, 20, 25, 30, 35, 40, 45, 50].map(n => (
                   <option key={n} value={n}>{n} Cards</option>
@@ -176,7 +176,7 @@ const AITools = () => {
               )}
             </div>
             
-            <div style={{ marginTop: '3rem', padding: '1.5rem', background: 'rgba(255,255,255,0.02)', borderRadius: '16px', border: '1px solid var(--surface-border)', display: 'center', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
+            <div style={{ marginTop: '3rem', padding: '1.5rem', background: 'rgba(255,255,255,0.02)', borderRadius: '16px', border: '1px solid var(--surface-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
                <p style={{ fontSize: '0.9rem' }}>Was this generation helpful? Let us know to improve future results.</p>
                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginTop: '1rem' }}>
                   <button className="btn-ghost" style={{ padding: '6px 20px', borderRadius: '30px' }}>Yes</button>
@@ -189,7 +189,7 @@ const AITools = () => {
 
       <style>{`
         .active-tool {
-          box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+          box-shadow: 0 0 30px rgba(212, 163, 115, 0.15);
         }
         .animate-spin {
           animation: spin 1s linear infinite;
@@ -251,8 +251,8 @@ const Flashcard = ({ front, back, index }) => {
           zIndex: 2
         }}>
           <span style={{ fontSize: '0.75rem', color: 'var(--text-dim)', position: 'absolute', top: '12px', left: '16px' }}>Card #{index + 1}</span>
-          <h5 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--text-main)' }}>{front}</h5>
-          <p style={{ fontSize: '0.75rem', color: 'var(--accent-purple)', marginTop: '1rem', fontWeight: 700 }}>FLIP TO REVEAL</p>
+          <h5 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--text-main)', fontFamily: 'var(--font-heading)' }}>{front}</h5>
+          <p style={{ fontSize: '0.75rem', color: 'var(--accent-beige)', marginTop: '1rem', fontWeight: 700, letterSpacing: '1px' }}>FLIP TO REVEAL</p>
         </div>
 
         {/* Back */}
@@ -269,9 +269,9 @@ const Flashcard = ({ front, back, index }) => {
           textAlign: 'center',
           background: 'var(--primary-glow)',
           borderRadius: '16px',
-          color: 'white'
+          color: 'var(--btn-text)'
         }}>
-          <p style={{ fontSize: '1rem', fontWeight: 500, lineHeight: 1.5 }}>{back}</p>
+          <p style={{ fontSize: '1.1rem', fontWeight: 600, lineHeight: 1.5, fontFamily: 'var(--font-heading)' }}>{back}</p>
         </div>
       </motion.div>
     </div>

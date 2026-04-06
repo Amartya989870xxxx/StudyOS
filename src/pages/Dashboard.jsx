@@ -133,23 +133,24 @@ const Dashboard = () => {
         <motion.h2
           className="animate-title"
           style={{
-            fontSize: '3.5rem',
-            fontWeight: 900,
+            fontSize: '4.5rem',
+            fontWeight: 800,
             marginBottom: '0.25rem',
-            letterSpacing: '-2px',
-            color: 'white',
-            lineHeight: 1
+            letterSpacing: '-3px',
+            color: 'var(--text-main)',
+            lineHeight: 0.9,
+            fontFamily: 'var(--font-heading)'
           }}
         >
-          Welcome Back,Champ
+          Welcome Back, <i style={{ fontWeight: 400 }}>Champ</i>
         </motion.h2>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '600px', fontStyle: 'italic', marginTop: '0.5rem' }}>
-            "{quote.text}" — <span style={{ color: 'var(--accent-blue)', fontWeight: 600 }}>{quote.author}</span>
+          <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', maxWidth: '700px', fontStyle: 'italic', marginTop: '1rem', lineHeight: 1.6 }}>
+            "{quote.text}" — <span style={{ color: 'var(--accent-beige)', fontWeight: 600 }}>{quote.author}</span>
           </p>
         </motion.div>
       </header>
@@ -198,14 +199,14 @@ const Dashboard = () => {
         {/* Productivity Line Chart */}
         <motion.div variants={itemVariants} className="glass" style={{ padding: '1.5rem', minHeight: '350px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
-            <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <TrendingUp size={20} color="var(--accent-blue)" /> Weekly Productivity
+            <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'var(--font-heading)' }}>
+              <TrendingUp size={20} color="var(--accent-beige)" /> Weekly Productivity
             </h3>
           </div>
           <div style={{ width: '100%', height: '260px' }}>
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={weeklyData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--surface-border)" vertical={false} />
                 <XAxis
                   dataKey="name"
                   stroke="var(--text-dim)"
@@ -221,7 +222,7 @@ const Dashboard = () => {
                 />
                 <Tooltip
                   contentStyle={{
-                    background: 'rgba(20, 20, 25, 0.9)',
+                    background: 'var(--surface-color)',
                     backdropFilter: 'blur(10px)',
                     border: '1px solid var(--surface-border)',
                     borderRadius: '12px'
@@ -230,10 +231,10 @@ const Dashboard = () => {
                 <Line
                   type="monotone"
                   dataKey="count"
-                  stroke="var(--accent-blue)"
-                  strokeWidth={3}
-                  dot={{ r: 4, fill: 'var(--accent-blue)', strokeWidth: 0 }}
-                  activeDot={{ r: 6, strokeWidth: 0 }}
+                  stroke="var(--accent-beige)"
+                  strokeWidth={4}
+                  dot={{ r: 5, fill: 'var(--bg-color)', stroke: 'var(--accent-beige)', strokeWidth: 2 }}
+                  activeDot={{ r: 8, strokeWidth: 0, fill: 'var(--accent-beige)' }}
                 />
               </LineChart>
             </ResponsiveContainer>
@@ -264,7 +265,7 @@ const Dashboard = () => {
                   </Pie>
                   <Tooltip
                     contentStyle={{
-                      background: 'rgba(20, 20, 25, 0.9)',
+                      background: 'var(--surface-color)',
                       backdropFilter: 'blur(10px)',
                       border: '1px solid var(--surface-border)',
                       borderRadius: '12px'
@@ -324,10 +325,10 @@ const Dashboard = () => {
           <h3 style={{ marginBottom: '1.25rem', fontSize: '1.1rem' }}>Total Progress</h3>
           <div style={{ position: 'relative', height: '140px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <svg width="120" height="120" viewBox="0 0 120 120">
-              <circle cx="60" cy="60" r="54" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="12" />
+              <circle cx="60" cy="60" r="54" fill="none" stroke="var(--surface-border)" strokeWidth="12" />
               <motion.circle
                 cx="60" cy="60" r="54" fill="none"
-                stroke="var(--accent-blue)" strokeWidth="12"
+                stroke="var(--accent-beige)" strokeWidth="12"
                 strokeDasharray="339.292"
                 initial={{ strokeDashoffset: 339.292 }}
                 animate={{ strokeDashoffset: 339.292 - (339.292 * stats.completionRate / 100) }}
@@ -356,7 +357,7 @@ const StatCard = ({ icon, title, value, subtitle, variants }) => (
     className="glass glow-card stat-card"
   >
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-      <div style={{ pading: '10px', borderRadius: '10px', background: 'rgba(255,255,255,0.05)', display: 'center', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px' }}>
+      <div style={{ padding: '10px', borderRadius: '10px', background: 'var(--surface-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '42px', height: '42px' }}>
         {icon}
       </div>
       <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)', fontWeight: 500 }}>{title}</span>
